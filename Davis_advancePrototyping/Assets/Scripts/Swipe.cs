@@ -5,6 +5,7 @@ using UnityEngine;
 public class Swipe : MonoBehaviour
 {
     private bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
+    private bool isdraging = false;
     private Vector2 startTouch, swipeDelta;
 
     private void Update()
@@ -15,10 +16,12 @@ public class Swipe : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             tap = true;
+            isdraging = true;
             startTouch = Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            isdraging = false;
             Reset();
         }
         #endregion
@@ -29,14 +32,31 @@ public class Swipe : MonoBehaviour
             if(Input.touches[0].phase == TouchPhase.Began)
             {
                 tap = true;
+                isdraging = true;
                 startTouch = Input.touches[0].position;
             }
             else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled)
                 {
-
+                isdraging = false;
+                Reset();
             }
         }
         #endregion
+
+        // Calculate the distance
+        swipeDelta = Vector2.zero;
+        if (isdraging)
+        {
+            if (Input.touches.Length >[0].position - startTouch) ;
+            else if (Input.GetMouseButton(0))
+                swipeDelta = (Vector2)Input.mousePosition - startTouch;
+        }
+
+        // Did we cross the deadzone
+        if(SwipeDelta.magnitude > 125)
+        {
+
+        }
     }
 
     private void Reset()
