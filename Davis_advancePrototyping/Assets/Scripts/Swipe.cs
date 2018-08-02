@@ -47,21 +47,45 @@ public class Swipe : MonoBehaviour
         swipeDelta = Vector2.zero;
         if (isdraging)
         {
-            if (Input.touches.Length >[0].position - startTouch) ;
+            if (Input.touches.Length > 0)
+                swipeDelta = Input.touches[0].position - startTouch;
             else if (Input.GetMouseButton(0))
                 swipeDelta = (Vector2)Input.mousePosition - startTouch;
         }
 
         // Did we cross the deadzone
-        if(SwipeDelta.magnitude > 125)
+        if(SwipeDelta.magnitude > 150)
         {
+            // Which direction?
+            float x = swipeDelta.x;
+            float y = swipeDelta.y;
+            if(Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                // Left or Right
+                if (x < 0)
+                    swipeLeft = true;
+                else
+                    swipeRight = true;
 
+            }
+            else
+            {
+                // Up or Down
+                if (x < 0)
+                    swipeUp = true;
+                else
+                    swipeDown = true;
+            }
+                
+
+            Reset();
         }
     }
 
     private void Reset()
     {
         startTouch = swipeDelta = Vector2.zero;
+        isdraging = false;
     }
 
     public Vector2 SwipeDelta { get { return swipeDelta; } }
