@@ -16,9 +16,9 @@ public class SwipeTest : MonoBehaviour {
         if (swipeControls.SwipeRight)
             desiredPosition += Vector3.right;
         if (swipeControls.SwipeUp)
-            desiredPosition += Vector3.up;
+            desiredPosition += Vector3.forward;
         if (swipeControls.SwipeDown)
-            desiredPosition += Vector3.down;
+            desiredPosition += Vector3.back;
 
         player.transform.position = Vector3.MoveTowards(player.transform.position, desiredPosition, 3f * Time.deltaTime);
     }
