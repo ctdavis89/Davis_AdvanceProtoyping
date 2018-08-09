@@ -59,22 +59,68 @@ public class Swipe : MonoBehaviour
             // Which direction?
             float x = swipeDelta.x;
             float y = swipeDelta.y;
-            if(Mathf.Abs(x) > Mathf.Abs(y))
+            RaycastHit _hit;
+
+            if (Mathf.Abs(x) > Mathf.Abs(y))
             {
                 // Left or Right
                 if (x < 0)
+                {
                     swipeLeft = true;
+                    if (Physics.Raycast(transform.position, -transform.right, out _hit, 1))
+                    {
+                        if(_hit.collider.gameObject.tag == "Wall")
+                        {
+                            //Debug.Log("I hit a wall when trying to go left");
+                            swipeLeft = false;
+                            return;
+                        }
+                    }
+                }
                 else
+                {
                     swipeRight = true;
+                    if (Physics.Raycast(transform.position, transform.right, out _hit, 1))
+                    {
+                        if (_hit.collider.gameObject.tag == "Wall")
+                        {
+                            //Debug.Log("I hit a wall when trying to go left");
+                            swipeRight = false;
+                            return;
+                        }
+                    }
+                }
 
             }
             else
             {
                 // Up or Down
                 if (x < 0)
+                {
                     swipeUp = true;
+                    if (Physics.Raycast(transform.position, transform.forward, out _hit, 1))
+                    {
+                        if (_hit.collider.gameObject.tag == "Wall")
+                        {
+                            //Debug.Log("I hit a wall when trying to go left");
+                            swipeUp = false;
+                            return;
+                        }
+                    }
+                }
                 else
+                {
                     swipeDown = true;
+                    if (Physics.Raycast(transform.position, -transform.forward, out _hit, 1))
+                    {
+                        if (_hit.collider.gameObject.tag == "Wall")
+                        {
+                            //Debug.Log("I hit a wall when trying to go left");
+                            swipeDown = false;
+                            return;
+                        }
+                    }
+                }
             }
                 
 
