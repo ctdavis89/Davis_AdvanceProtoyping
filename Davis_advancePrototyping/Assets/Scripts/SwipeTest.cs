@@ -11,10 +11,10 @@ public class SwipeTest : MonoBehaviour {
     private void Update()
     {
         if (swipeControls.SwipeLeft)
-            desiredPosition += Vector3.right;
+            desiredPosition += Vector3.left;
 
         if (swipeControls.SwipeRight)
-            desiredPosition += Vector3.left;
+            desiredPosition += Vector3.right;
         if (swipeControls.SwipeUp)
             desiredPosition += Vector3.forward;
         if (swipeControls.SwipeDown)
