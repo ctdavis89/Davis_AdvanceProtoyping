@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject YouWin;
 
-    private void Awake()
+     void Awake()
     {
         if (instance == null)
             instance = this;
@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         YouWin.SetActive(true);
-        // slow down time
-        //reset the game
     }
+    
 }
