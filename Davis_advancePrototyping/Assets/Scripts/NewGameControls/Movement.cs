@@ -31,7 +31,6 @@ public class Movement : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(20);
 
-        
         StartCoroutine(Scheme2());
         StopCoroutine(Scheme1());
     }
@@ -40,7 +39,6 @@ public class Movement : MonoBehaviour
     IEnumerator Scheme2()
     {
         yield return new WaitForSecondsRealtime(20);
-
 
         StartCoroutine(Scheme1());
        
