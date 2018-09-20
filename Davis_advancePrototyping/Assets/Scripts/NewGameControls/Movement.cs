@@ -27,12 +27,9 @@ public class Movement : MonoBehaviour
 
 
 
-    IEnumerator  Scheme1()
+    IEnumerator Scheme1()
     {
-        transform.Translate(mSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, mSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
-
-        yield return new WaitForSecondsRealtime(5);
-
+        yield return new WaitForSecondsRealtime(20);
 
         
         StartCoroutine(Scheme2());
@@ -42,12 +39,11 @@ public class Movement : MonoBehaviour
 
     IEnumerator Scheme2()
     {
-        transform.Translate(mSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, mSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
-
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(20);
 
 
         StartCoroutine(Scheme1());
+       
         StopCoroutine(Scheme2());
 
     }

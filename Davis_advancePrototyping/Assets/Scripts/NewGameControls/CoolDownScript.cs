@@ -38,5 +38,7 @@ public class CoolDownScript : MonoBehaviour {
             timer = 0.0f;
         }
 
+
+
 	}
 }
